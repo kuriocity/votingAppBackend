@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 var cors = require('cors')
@@ -25,5 +26,5 @@ const pollsRouter = require('./routes/polls');
 app.use('/polls', pollsRouter);
 
 app.listen(9000, () => {
-    console.log("Server Started");
+    console.log("Server Started at Port 9000");
 })

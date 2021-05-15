@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Poll = require('../models/poll')
+const Poll = require('../models/Poll')
 
 // Getting all
 router.get('/', async (req, res) => {
@@ -31,6 +31,7 @@ router.get('/:voterCode', getPollByVoterCode, async (req, res) => {
 router.post('/', async (req, res) => {
     const poll = new Poll({
         voterCode: req.body.voterCode,
+        pollQuestion: req.body.pollQuestion,
         polls: req.body.polls
     })
     try {
@@ -44,10 +45,13 @@ router.post('/', async (req, res) => {
 // Updating One
 router.patch('/:voterCode', getPollByVoterCode, async (req, res) => {
     if (req.body.voterCode != null) {
-        res.poll.voterCode = req.body.voterCode
+        res.poll.voterCode = req.body.voterCode;
     }
     if (req.body.polls != null) {
-        res.poll.polls = req.body.polls
+        res.poll.polls = [...res.poll.polls, ...req.body.polls];
+    }
+    if (req.body.pollQuestion != null) {
+        res.poll.pollQuestion = req.body.pollQuestion;
     }
     try {
         const updatedPoll = await res.poll.save()
@@ -56,6 +60,20 @@ router.patch('/:voterCode', getPollByVoterCode, async (req, res) => {
         res.status(400).json({ message: err.message })
     }
 })
+
+//Submitting vote
+router.patch('/:voterCode/vote/:order', getPollByVoterCode, async (req, res) => {
+
+    try {
+        res.poll.polls[req.params.order].votes++;
+        
+        const updatedPoll = await res.poll.save()
+        res.json(updatedPoll)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+})
+
 
 // Deleting One
 router.delete('/:voterCode', getPollByVoterCode, async (req, res) => {
