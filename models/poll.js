@@ -6,20 +6,24 @@ const pollSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  pollQuestion: {
+    type: String,
+    required: true,
+  },
   polls: [
     {
-      name: String,
+      name: String, 
       votes: {
         type: Number,
         default: 0
       }
     }
-  ]
+  ],
+  usersVoted: [{}],
   /*{
     type: Array,
     required: true
   }*/
-  ,
   createdDate: {
     type: Date,
     required: true,
