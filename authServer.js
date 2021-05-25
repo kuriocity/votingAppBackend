@@ -78,6 +78,32 @@ app.post('/token', async (req, res) => {
     })
 })
 
+app.get('/user/:username', /*authenticateToken,*/ async (req, res) => {
+    const user = await User.findOne({ username: req.params.username });
+    if (!user) res.status(404).json({ message: 'User Not Found' })
+
+    console.log(user);
+    res.json(user);
+})
+
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    if (token == null) return res.sendStatus(401)
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) {
+            console.log(err)
+            return res.sendStatus(403)
+        }
+
+        req.user = user
+        console.log('In middleware user :', req.user);
+        next()
+    })
+}
+
+
 app.delete('/logout', async (req, res) => {
     await RefreshToken.findOne({ token: req.body.token }).remove();
     res.sendStatus(204);
@@ -117,13 +143,15 @@ app.post('/forgotPassword', async (req, res) => {
 })
 
 const generateAccessToken = user => {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15s' });
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1 week' });
 }
 
 
 app.listen(8000, () => {
     console.log("Auth Server Started at Port 8000");
 })
+
+//Email
 
 const sendforgotPasswordEmail = (user) => {
     const forgotPasswordMailBody = `
