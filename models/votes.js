@@ -14,6 +14,11 @@ const VoteSchema = new Schema(
         poll: {
             type: Schema.Types.ObjectId,
             ref: 'Poll'
+        },
+        option: {
+            type: Number,
+            required: true,
+            default: -1
         }
     }
 )

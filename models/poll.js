@@ -1,5 +1,15 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
+
+const userSchema = new mongoose.Schema({
+  usersVoted: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ]
+});
 const pollSchema = new mongoose.Schema({
   voterCode: {
     type: String,
@@ -10,16 +20,37 @@ const pollSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  pollCreator: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   polls: [
     {
-      name: String, 
+      name: {
+        type: String,
+        required: true,
+        unique: true
+      },
       votes: {
         type: Number,
         default: 0
-      }
+      },
+      usersVoted: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'User'
+        }
+      ]
     }
   ],
-  usersVoted: [{}],
+  usersVoted: [
+    [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ]
+  ],
   /*{
     type: Array,
     required: true

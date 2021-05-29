@@ -24,21 +24,31 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  pollsCreated:
-    [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Poll'
-      }
-    ]
+  pollsCreated: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Poll'
+    }
+  ]
   ,
-  pollsVoted:
-    [
-      {
+  pollsVoted: {
+    type: Map,
+    of: String,
+    default: {}
+  }
+  /*[
+    {
+      poll: {
         type: Schema.Types.ObjectId,
         ref: 'Poll'
+      },
+      option: {
+        type: Number,
+        required: true,
+        default: -1
       }
-    ]
+    }
+  ]*/
   ,
   createdDate: {
     type: Date,
