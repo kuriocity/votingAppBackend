@@ -4,7 +4,7 @@
   "description": "Voting App",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "node authServer.js"
   },
   "author": "Kuriocity",
   "license": "ISC",
