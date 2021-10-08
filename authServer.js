@@ -12,7 +12,10 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const url = 'mongodb://localhost/VoteAppDB';
+//const url = 'mongodb://localhost/VoteAppDB';
+const url = process.env.DATABASE_URL;
+ //'';
+
 mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 

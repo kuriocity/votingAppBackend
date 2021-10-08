@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 var cors = require('cors')
 
 
-const url = 'mongodb://localhost/VoteAppDB';
+//const url = 'mongodb://localhost/VoteAppDB';
+const url = process.env.DATABASE_URL;
 
 const app = express();
 
