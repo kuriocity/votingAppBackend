@@ -4,7 +4,8 @@
   "description": "Voting App",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo \"building \" && exit 1",
   },
   "author": "Kuriocity",
   "license": "ISC",
