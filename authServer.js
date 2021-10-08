@@ -150,8 +150,8 @@ const generateAccessToken = user => {
 }
 
 
-app.listen(8000, () => {
-    console.log("Auth Server Started at Port 8000");
+app.listen( process.env.PORT || 80, () => {
+    console.log("Auth Server Started at Port ");
 })
 
 //Email
