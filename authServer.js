@@ -150,7 +150,7 @@ const generateAccessToken = user => {
 }
 
 
-app.listen( process.env.PORT || 80, () => {
+app.listen(process.env.PORT || 8000, () => {
     console.log("Auth Server Started at Port ");
 })
 
