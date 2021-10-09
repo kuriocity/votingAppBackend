@@ -22,6 +22,14 @@ db.on('error', (error) => console.error(error))
 
 app.use(express.json());
 
+app.get('/', async (req, res) => {
+    try {
+
+        res.json({ "test": "it's working" });
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+})
 
 app.use('/polls', pollsRouter);
 

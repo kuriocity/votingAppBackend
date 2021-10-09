@@ -1,9 +1,9 @@
 {
   "name": "voting-app-backend-2",
   "version": "1.0.0",
-   "engines": {
-     "node": "14.17.0"
-     },
+  "engines": {
+    "node": "14.17.0"
+  },
   "description": "Voting App 2",
   "main": "server.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.5",
     "nodemailer": "^6.6.0",
-     "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
