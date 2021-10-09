@@ -1,9 +1,9 @@
 {
   "name": "voting-app-backend-2",
   "version": "1.0.0",
- "engines": {
-   "node": "12.11.1"
-   },
+   "engines": {
+     "node": "14.17.0"
+     },
   "description": "Voting App 2",
   "main": "server.js",
   "scripts": {
