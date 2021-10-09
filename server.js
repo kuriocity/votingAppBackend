@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 var cors = require('cors')
-
+const pollsRouter = require('./routes/polls');
 
 //const url = 'mongodb://localhost/VoteAppDB';
 const url = process.env.DATABASE_URL;
@@ -22,7 +22,6 @@ db.on('error', (error) => console.error(error))
 
 app.use(express.json());
 
-const pollsRouter = require('./routes/polls');
 
 app.use('/polls', pollsRouter);
 
