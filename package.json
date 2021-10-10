@@ -1,12 +1,16 @@
 {
-  "name": "voting-app-backend",
+  "name": "voting-app-backend-2",
   "version": "1.0.0",
-  "description": "Voting App",
-  "main": "index.js",
+  "engines": {
+    "node": "14.17.0"
+  },
+  "description": "Voting App 2",
+  "main": "server.js",
   "scripts": {
+    "build": "echo \"building \" ",
     "start": "node authServer.js"
   },
-  "author": "Kuriocity",
+  "author": "Kuriocity2",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -15,10 +19,10 @@
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.5",
-    "nodemailer": "^6.6.0"
+    "nodemailer": "^6.6.0",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
     "nodemon": "^2.0.7"
   }
 }
