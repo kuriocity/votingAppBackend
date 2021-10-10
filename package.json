@@ -7,8 +7,8 @@
   "description": "Voting App 2",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "echo \"building \" "
+    "build": "echo \"building \" ",
+    "start": "node authServer.js"
   },
   "author": "Kuriocity2",
   "license": "ISC",
